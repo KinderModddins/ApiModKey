@@ -75,15 +75,15 @@ from apimodkey import edit_key_status
 # Указываем API-ключ
 api_key = "YOUR_API_KEY"
 
-# Изменяем статус ключа на 'inactive'
-edit_key_status(api_key, 'your_key', 'inactive')
+# Изменяем статус ключа на block или можно  'active'
+edit_key_status(api_key, 'your_key', 'block')
 ```
 
 **Пример вывода**:
 ```
 Статус ключа успешно изменен!
 Старый статус: active
-Новый статус: inactive
+Новый статус: block
 ```
 
 ---
