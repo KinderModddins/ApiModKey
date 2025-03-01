@@ -20,7 +20,7 @@ def api_request(api_key, method, **kwargs):
         response = requests.post(url, data=data)
         if response.ok:
             result = response.json()
-            print("Ответ от API:", result)  # Выводим полный ответ для отладки
+            print(result)  # Выводим полный ответ для отладки
             if result.get('status'):  # Используем get(), чтобы избежать KeyError
                 return True, result['data']  # Возвращаем саму data, а не msg
             else:
@@ -51,11 +51,11 @@ def create_key(api_key, days, devices, key_type):
     )
     if status:
  #       print('Ключ успешно создан!')
-        print(f'Ваш ключ: {msg["key"]}')
-        return f"Ключ успешно создан!\nВаш ключ: {msg['key']}"  # Возвращаем строку с результатом
+        print(f'{msg["key"]}')
+ #       return f"Ключ успешно создан!\nВаш ключ: {msg['key']}"  # Возвращаем строку с результатом
     else:
         print(f'Ошибка: {msg}')
-        return f"Ошибка при создании ключа: {msg}"  # Возвращаем строку с ошибкой
+ #       return f"Ошибка при создании ключа: {msg}"  # Возвращаем строку с ошибкой
 
 def edit_key_status(api_key, key, new_status):
     """
@@ -74,7 +74,7 @@ def edit_key_status(api_key, key, new_status):
     )
     
     if status:
-        print('Статус ключа успешно изменен!')
+#        print('Статус ключа успешно изменен!')
         print(f'Старый статус: {msg["old_status"]}')  # Просто выводим строку
         print(f'Новый статус: {msg["new_status"]}')
     else:
