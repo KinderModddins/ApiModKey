@@ -50,7 +50,7 @@ def create_key(api_key, days, devices, key_type):
         type=key_type
     )
     if status:
-        print('Ключ успешно создан!')
+ #       print('Ключ успешно создан!')
         print(f'Ваш ключ: {msg["key"]}')
         return f"Ключ успешно создан!\nВаш ключ: {msg['key']}"  # Возвращаем строку с результатом
     else:
