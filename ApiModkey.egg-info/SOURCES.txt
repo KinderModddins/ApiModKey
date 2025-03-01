@@ -1,0 +1,11 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.py
+ApiModkey.egg-info/PKG-INFO
+ApiModkey.egg-info/SOURCES.txt
+ApiModkey.egg-info/dependency_links.txt
+ApiModkey.egg-info/requires.txt
+ApiModkey.egg-info/top_level.txt
+apimodkey/__init__.py
