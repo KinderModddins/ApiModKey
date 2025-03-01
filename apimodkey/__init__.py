@@ -1,7 +1,6 @@
 import requests
 
 def api_request(api_key, method, **kwargs):
-
     url = 'https://modkey.space/api/v1/action'
     data = {
         'method': method,
@@ -25,6 +24,7 @@ def api_request(api_key, method, **kwargs):
         print(e)
         return False, f'Request failed: {str(e)}'
 
+
 def create_key(api_key, days, devices, key_type):
     status, msg = api_request(
         api_key=api_key,
@@ -34,13 +34,13 @@ def create_key(api_key, days, devices, key_type):
         type=key_type
     )
     if status:
-        print(f'{msg["key"]}')
-
+     #   print(f'Ключ создан: {msg["key"]}')
+        return msg["key"]  # Возвращаем ключ для дальнейшего использования
     else:
-        print(f'Ошибка: {msg}')
+        return {msg}
+
 
 def edit_key_status(api_key, key, new_status):
-
     status, msg = api_request(
         api_key=api_key,
         method='edit-key-status',
@@ -49,24 +49,36 @@ def edit_key_status(api_key, key, new_status):
     )
     
     if status:
-        print(f'Старый статус: {msg["old_status"]}')  # Просто выводим строку
-        print(f'Новый статус: {msg["new_status"]}')
+        return {msg["old_status"]} # Просто выводим строку
+        return {msg["new_status"]}
     else:
-        print(f'Ошибка: {msg}')
+        return {msg}
 
-def edit_user_key(api_key, key, new_key):
 
-    response = api_request(
+def edit_key_max_devices(api_key, key, new_max_devices):
+    status, msg = api_request(
+        api_key=api_key,
+        method='edit-key-max-devices',
+        key=key,
+        new_max_devices=new_max_devices
+    )
+    
+    if status:
+        return {msg["old_max_devices"]}
+        return {msg["new_max_devices"]}
+    else:
+        return {msg}
+
+
+def edit_user_key(api_key, key, new_user_key):
+    status, msg = api_request(
         api_key=api_key,
         method='edit-user-key',
         key=key,
-        new_user_key=new_key
+        new_user_key=new_user_key
     )
 
-    print(response)  # Ответ от апи
-
-
-    if response[0] and isinstance(response[1], dict) and response[1].get('status'):
-        print(f'Ключ {key} успешно изменен на {new_key}.')
+    if status:
+        return new_user_key
     else:
-        print(f'Ошибка: {response[1].get("message", "Неизвестная ошибка")}')
+        return {msg}

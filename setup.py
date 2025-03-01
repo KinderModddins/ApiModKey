@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="ApiModkey",
-    version="0.1.9",
+    version="0.2.0",
     author="MAKCNMOB",
     author_email="support@gmail.com",
     description="Библиотека для использования апи от Modkey.space",
